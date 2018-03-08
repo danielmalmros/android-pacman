@@ -1,30 +1,77 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context="org.example.pacman.MainActivity" >
 
-    <Button
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/move_right"
-        android:id="@+id/moveRight"/>
+        android:id="@+id/buttons"
+        android:weightSum="4"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/black"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/moveLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/move_left"
+            android:background="@android:color/white"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/move_up"
+            android:layout_weight="1"
+            android:id="@+id/moveUp"
+            android:background="@android:color/white"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/move_down"
+            android:layout_weight="1"
+            android:id="@+id/moveDown"
+            android:background="@android:color/white"/>
+
+        <Button
+            android:id="@+id/moveRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/white"
+            android:text="@string/move_right" />
+
+    </LinearLayout>
+
+    <org.example.pacman.GameView
+        android:id="@+id/gameView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/buttons">
+    </org.example.pacman.GameView>
 
     <TextView
         android:id="@+id/points"
         android:textSize="24sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/points" />
+        android:text="@string/points"
+        android:textColor="@android:color/white"/>
 
-    <!-- Notice how the custom view is referenced here with
-    a full package path-->
-    <org.example.pacman.GameView
-        android:id="@+id/gameView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/levelTimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/levelTimer"
+        android:textColor="@android:color/white"
+        android:textSize="24sp" />
 
-    </org.example.pacman.GameView>
-
-</LinearLayout>
+</RelativeLayout>

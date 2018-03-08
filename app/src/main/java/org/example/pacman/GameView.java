@@ -25,7 +25,6 @@ public class GameView extends View {
 	 */
 	public GameView(Context context) {
 		super(context);
-
 	}
 
 	public GameView(Context context, AttributeSet attrs) {
@@ -47,15 +46,37 @@ public class GameView extends View {
 		w = canvas.getWidth();
 		//update the size for the canvas to the game.
 		game.setSize(h,w);
-		Log.d("GAMEVIEW","h = "+h+", w = "+w);
 		//Making a new paint object
+
 		Paint paint = new Paint();
-		canvas.drawColor(Color.WHITE); //clear entire canvas to white color
+		canvas.drawColor(Color.BLACK); //clear entire canvas to black color
+
+		if (!game.getCoinsInitialized() && !game.getEnemyInitialized())
+		{
+			game.initCoins();
+			game.initEnemy();
+		}
+
+
+		//loop through the list of goldcoins and draw them.
+		for (GoldCoin coin: game.getCoins())
+		{
+		    if (!coin.taken) {
+                paint.setColor(Color.YELLOW);
+                canvas.drawCircle(coin.getCoinx(), coin.getCoiny(), 20, paint);
+            }
+        }
+
+		//loop through the list of enemy and draw them.
+		for (Enemy enemy: game.getEnemies())
+		{
+				paint.setColor(Color.RED);
+				canvas.drawCircle(enemy.getEnemyX(), enemy.getEnemyY(), 70, paint);
+		}
 
 		//draw the pacman
 		canvas.drawBitmap(game.getPacBitmap(), game.getPacx(),game.getPacy(), paint);
-		//TODO loop through the list of goldcoins and draw them.
+
 		super.onDraw(canvas);
 	}
-
 }

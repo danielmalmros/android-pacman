@@ -9,6 +9,12 @@
         android:title="@string/newgame"/>
 
     <item
+        android:id="@+id/action_pauseGame"
+        android:orderInCategory="100"
+        android:showAsAction="always"
+        android:title="@string/pauseGame"/>
+
+    <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:showAsAction="never"
